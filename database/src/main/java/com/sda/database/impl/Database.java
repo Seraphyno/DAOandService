@@ -26,6 +26,7 @@ public class Database implements IDatabaseAccess {
         } else {
             LOGGER.warn("User with id '{}' not found", id);
         }
+        //TODO - optional change goes here
         return user;
     }
 
@@ -38,12 +39,12 @@ public class Database implements IDatabaseAccess {
     @Override
     public boolean save(IUser user) {
         LOGGER.debug("Attempting to save user '{}'", user);
-        if (database.containsKey(user.getEmail())) {
-            LOGGER.error("User with id '{}' already present in database", user.getEmail());
+        if (database.containsKey(user.getId())) {
+            LOGGER.error("User with id '{}' already present in database", user.getId());
             return false;
         } else {
-            LOGGER.info("User with id '{}' saved in database", user.getEmail());
-            database.put(user.getEmail(), user);
+            LOGGER.info("User with id '{}' saved in database", user.getId());
+            database.put(user.getId(), user);
             return true;
         }
     }

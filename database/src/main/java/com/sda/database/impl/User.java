@@ -3,6 +3,7 @@ package com.sda.database.impl;
 import com.sda.database.api.IUser;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class User implements IUser {
 
@@ -43,5 +44,17 @@ public class User implements IUser {
     @Override
     public LocalDateTime getTimeCreated() {
         return timeCreated;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", password=").append(Arrays.toString(password));
+        sb.append(", timeCreated=").append(timeCreated);
+        sb.append('}');
+        return sb.toString();
     }
 }
