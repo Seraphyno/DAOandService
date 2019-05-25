@@ -1,6 +1,7 @@
 package com.sda.database.api;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Interface used to access the database
@@ -12,7 +13,7 @@ public interface IDatabaseAccess {
      * @param id unique user identifier
      * @return IUser object
      */
-    IUser getById(String id);
+    Optional<IUser> getById(String id);
 
     /**
      * Retrieve all users from database

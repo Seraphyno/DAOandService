@@ -5,9 +5,11 @@ import static com.sda.database.impl.DatabaseData.buildDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.sda.database.api.IDatabaseAccess;
 import com.sda.database.api.IUser;
+import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +19,7 @@ public class Database implements IDatabaseAccess {
     private Map<String, IUser> database = buildDatabase();
 
     @Override
-    public IUser getById(String id) {
+    public Optional<IUser> getById(String id) {
         LOGGER.debug("Getting user with id '{}'", id);
         IUser user = null;
         if (database.containsKey(id)) {
@@ -26,8 +28,8 @@ public class Database implements IDatabaseAccess {
         } else {
             LOGGER.warn("User with id '{}' not found", id);
         }
-        //TODO - optional change goes here
-        return user;
+
+        return Optional.ofNullable(user);
     }
 
     @Override

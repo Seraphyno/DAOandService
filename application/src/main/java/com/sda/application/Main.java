@@ -11,10 +11,14 @@ public class Main {
         IForm form = new Form();
         IUser someNewUser;
 
-        //todo - register a new valid user
-        //todo - register an invalid user (existing)
-        //todo - create a test for login functionality in form module
-        //todo - cover in the test all posibilities
-        //TODO - create test for database access and cover all functionalities
+        form.login("thor@asgard.as" , "Mjolnir");
+        form.login("" , "");
+
+        //todo - register a new valid user (TEMA 26.05)
+        //todo - register an invalid user (existing) (TEMA 26.05)
+
+        //todo - create a test for login functionality in form module (TEMA 8.06)
+        //todo - cover in the test all posibilities (TEMA 8.06)
+        //TODO - create test for database access and cover all functionalities (TEMA 8.06)
     }
 }
