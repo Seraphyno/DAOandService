@@ -14,15 +14,9 @@ public class Main {
         form.login("thor@asgard.as" , "Mjolnir");
         form.login("" , "");
 
-        //todo - register a new valid user (TEMA 26.05)
         someNewUser = new User("Jon Snow", "snow@theblackcastle.wall", "ghost");
         form.registerUser(someNewUser);
-        //todo - register an invalid user (existing) (TEMA 26.05)
         IUser badUser = new User("Thor", "thor@asgard.as", "");
         form.registerUser(badUser);
-
-        //todo - create a test for login functionality in form module (TEMA 8.06)
-        //todo - cover in the test all posibilities (TEMA 8.06)
-        //TODO - create test for database access and cover all functionalities (TEMA 8.06)
     }
 }

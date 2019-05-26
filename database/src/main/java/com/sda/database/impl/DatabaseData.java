@@ -15,7 +15,6 @@ class DatabaseData {
     private static final IUser GUEST = new User("guest", "guest@windows.com", "guestUser");
     private static final IUser THOR = new User("thor", "thor@asgard.as", "Mjolnir");
 
-
     static Map<String, IUser> buildDatabase() {
         Map<String, IUser> result = new HashMap<>();
         result.put(ROOT.getId(), ROOT);
