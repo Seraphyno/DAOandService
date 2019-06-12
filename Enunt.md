@@ -8,14 +8,14 @@ ___________________________________________
 ___________________________________________
 
 #### I. Arhitectura dorita:
-1. [Layer de database](#a-namedatabase-iddatabase1-layer-ul-databasea) 
-2. [Layer de service](#a-nameservice1-layer-ul-servicea) 
-3. [Layer de input/form](#a-nameform-idform3-layer-ul-forma) 
+1. [Layer de database](#database) 
+2. [Layer de service](#service) 
+3. [Layer de input/form](#form) 
 
 #### II. Tipuri de date si functionalitati:
-1. [User](#a-nameuser-iduserusera)
-2. [Database](#a-namedb-iddbdatabasea)
-3. [Service](#a-nameserv-idservservicea)
+1. [User](#user)
+2. [Database](#db)
+3. [Service](#serv)
 
 ___________________________________________
 ___________________________________________
