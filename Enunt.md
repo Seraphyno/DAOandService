@@ -1,43 +1,87 @@
-se doreste implementarea unei aplicatii care are ca scop functionalitatea de login si de register pe o platforma web
+## Login App --- Enunt
 
-Arhitectura dorita:
-1. Layer de database - trebuie sa suporte Create, Read, Delete
-2. Layer de service - trebuie sa preia informatia de la input *UI simulat* sa valideze, apoi sa acceseze functionalitatea de database
-3. Layer de intrare/input - e suficient sa creati o metoda main
+Se doreste implementarea unei aplicatii care are ca scop functionalitatea de __login__ si de __register__ pe 
+o platforma web. Pentru a putea valida informatiile unui utilizator este nevoie de acces la o baza de date - 
+deci vom simula existenta uneia, fara a implementa efectiv un driver sau a avea un sistem de gestiune instalat.
 
-Note:
-- cele 3 layere vor sta in module maven diferite
-- in interiorul layerului de database se face si definirea obiectului de tip User
+___________________________________________
+___________________________________________
 
-Pasul 1:
-Creati modulul database
-Creati un package pentru interfete, in interiorul caruia creati tipul User si Database
-Creati un package pt implementari, unde veti implementa cele 2 interfete
-Aditional pentru Database va fi nevoie de o metoda statica care sa intoarca o mapa/lista de useri
-Creati o clasa de test care sa verifice functionalitatea din Database
+#### I. Arhitectura dorita:
+1. [Layer de database](#a-namedatabase-iddatabase1-layer-ul-databasea) 
+2. [Layer de service](#a-nameservice1-layer-ul-servicea) 
+3. [Layer de input/form](#a-nameform-idform3-layer-ul-forma) 
 
-Pasul 2:
-Creati modulul service (form) 
-Creati un package pentru interfete, in interiorul caruia creati tipul Service. Acesta descrie functionalitatea de login, register si delete user
-Creati un package pt implementari, unde veti implementa aceasta interfata
-Atentie: pt implementare aveti nevoie sa creati un obiect de tip database
-Creati o clasa de test care sa verifice functionalitatea din Service
+#### II. Tipuri de date si functionalitati:
+1. [User](#a-nameuser-iduserusera)
+2. [Database](#a-namedb-iddbdatabasea)
+3. [Service](#a-nameserv-idservservicea)
 
-Optional:
-Creati un modul de application cu o clasa main care apeleaza aceasta funuctionalitate
+___________________________________________
+___________________________________________
 
-Tipuri si functionalitati:
-- User
-	- email, parola, name
-	- getteri
-- Database
-	- o colectie privata care contine useri, proprietate privata
-	- getById(id): intoarce userul cu un anumit id, daca exista
-	- getall(): intoarce toti userii
-	- save(user): salveaza user-ul 
-	- delete(id): sterge userul cu id, daca exista
-- Service
-	- contine un obiect de tip database pe care se vor apela operatiile disponibile
-	- login(email, parola): verifica in db daca exista user cu acel id, il intoarce ca sa verifice parola de pe el. in caz de succes saluta userul folosindu-i numele
-	- register(user): valideaza input - optional se poate verifica inainte de validare daca exista deja un user cu acel id. daca e valid - salveaza in database
-	- delete(id): daca exista userul, il sterge
+*Note:*
+- Cele 3 layere vor sta in _module_ Maven diferite
+- In interiorul layerului de database se face si definirea obiectului de tip `User`
+
+#### <a name="database" id="database">1. Layer-ul database</a>
+**Cerinte**:
+  - Trebuie sa suporte actiuni de tip: _Create_, _Read_, _Delete_ <br>
+    
+**Pasi necesari**:
+  - Creati modulul `database`
+  - Creati un package pentru interfete (`api`), in interiorul caruia creati tipurile `IUser` si `IDatabase`
+  - Creati un package pt implementari (`impl`), unde veti implementa cele 2 interfete
+  - Aditional pentru `Database` va fi nevoie de o metoda statica care sa intoarca o mapa de useri<br>
+  Aceasta va fi un `Map<String, IUser>` deoarece vrem sa identificam un user unic dupa un _id_. Acest id poate 
+  fi chiar emailul
+  - Creati o clasa de test care sa verifice functionalitatea din `Database`
+
+___________________________________________
+#### <a name="service" id="service">2. Layer-ul service</a>
+**Cerinte**:
+  - Trebuie sa preia informatia de la input *UI simulat* (in cazul nostru din `form`) sa o valideze, apoi sa 
+  apeleze functionalitatea din database
+
+**Pasi necesari**:
+  - Creati modulul `service`
+  - Creati un package pentru interfete (`api`), in interiorul caruia creati tipul `IService`. Acesta descrie
+   functionalitatea de `login()`, `register()` si `delete()` user
+  - Creati un package pt implementari (`impl`), unde veti implementa aceasta interfata<br>
+  **Atentie**: pt implementare aveti nevoie sa creati un obiect de tip `Database`
+  - Creati o clasa de test care sa verifice functionalitatea din `IService`
+___________________________________________
+#### <a name="form" id="form">3. Layer-ul form</a>
+**Cerinte**:
+- Minim suficient sa creati o metoda `main()`
+
+**Pasi necesari**:
+  - Creati un modul `application` cu o clasa `Main` care apeleaza aceaste funuctionalitati
+
+___________________________________________
+___________________________________________
+#### Tipuri de date si functionalitati
+___________________________________________
+##### <a name="user" id="user">User</a>
+Continut:
+  - email, parola, name
+  - getteri
+  
+___________________________________________
+##### <a name="db" id="db">Database</a>
+Continut:
+  - o colectie privata care contine useri, proprietate privata
+  - `getById(id)`: intoarce userul cu un anumit id, daca exista
+  - `getAll()`: intoarce toti userii
+  - `save(user)`: salveaza user-ul 
+  - `delete(id)`: sterge userul cu id, daca exista
+
+___________________________________________
+##### <a name="serv" id="serv">Service</a>
+Continut: 
+  - contine un obiect de tip `Database` pe care se vor apela operatiile disponibile
+  - `login(email, parola)`: verifica in _database_ daca exista user cu acel _id_, il intoarce ca sa verifice 
+  _parola_ de pe obiect. In caz de succes saluta userul folosindu-i numele
+  - `register(user)`: valideaza input - se verifica inainte de validare daca exista deja un _user_ cu acel 
+  _id_. Daca e valid - salveaza in _database_
+  - `delete(id)`: daca exista user cu acel _id_, il sterge
