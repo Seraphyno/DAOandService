@@ -89,7 +89,10 @@ public class Form implements IForm {
     private boolean nameIsTaken(String name) {
         Predicate<String> isSameName = existingName -> existingName.equals(name);
         List<IUser> existingUsers = databaseConnection.getAll();
-        Optional<String> nameFoundOp = existingUsers.stream().map(IUser::getName).filter(isSameName).findFirst();
+        Optional<String> nameFoundOp = existingUsers.stream()
+                                            .map(IUser::getName)
+                                            .filter(isSameName)
+                                            .findFirst();
 
         return nameFoundOp.isPresent();
     }

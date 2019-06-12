@@ -13,7 +13,6 @@ public class FormTest {
 
     private Form target = new Form();
     private IUser validUser = getValidUser();
-
     private IUser invalidUser = getInvalidUser();
 
     @Test
