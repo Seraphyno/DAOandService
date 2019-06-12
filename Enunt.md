@@ -1,11 +1,4 @@
-## Login App --- Enunt
-
-Se doreste implementarea unei aplicatii care are ca scop functionalitatea de __login__ si de __register__ pe 
-o platforma web. Pentru a putea valida informatiile unui utilizator este nevoie de acces la o baza de date - 
-deci vom simula existenta uneia, fara a implementa efectiv un driver sau a avea un sistem de gestiune instalat.
-
-___________________________________________
-___________________________________________
+## Login App - Enunt
 
 #### I. Arhitectura dorita:
 1. [Layer de database](#database) 
