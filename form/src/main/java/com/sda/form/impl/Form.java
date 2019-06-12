@@ -26,6 +26,17 @@ public class Form implements IForm {
         LOGGER.debug("Registering a new user, with id '{}'", newUser.getId());
         IUser existingUser = databaseConnection.getById(newUser.getId());
         //todo - implement the rest of the method
+        /*caut in db daca exista user cu ac id
+        // daca da -> afisez mesaj eroare
+        //daca nu -> validari
+        //              - email nu e null sau empty string
+        //              - parola nu e goala
+        //              - numele nu e deja in DB (recomand metoda cu streams)
+                        apelati acel getAll(), faceti un stream care
+                            mapeaza numele de user
+                            filtreaza numele lor .equals() numele de salvat
+        //          -> salvez in db
+        */
     }
 
     @Override
