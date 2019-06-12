@@ -25,6 +25,7 @@ public class Form implements IForm {
     public void registerUser(IUser newUser) {
         LOGGER.debug("Registering a new user, with id '{}'", newUser.getId());
         IUser existingUser = databaseConnection.getById(newUser.getId());
+        //todo - implement the rest of the method
     }
 
     @Override

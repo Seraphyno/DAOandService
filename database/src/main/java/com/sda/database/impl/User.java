@@ -55,6 +55,7 @@ public class User implements IUser {
         sb.append(", password=").append(Arrays.toString(password));
         sb.append(", timeCreated=").append(timeCreated);
         sb.append('}');
+
         return sb.toString();
     }
 }

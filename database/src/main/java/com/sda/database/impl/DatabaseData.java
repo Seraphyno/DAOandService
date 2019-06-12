@@ -1,11 +1,11 @@
 package com.sda.database.impl;
 
-import com.google.common.collect.ImmutableMap;
-import com.sda.database.api.IUser;
-
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import com.sda.database.api.IUser;
 
 class DatabaseData {
 
@@ -15,24 +15,23 @@ class DatabaseData {
     private static final IUser GUEST = new User("guest", "guest@windows.com", "guestUser");
     private static final IUser THOR = new User("thor", "thor@asgard.as", "Mjolnir");
 
-
-    static Map<String, IUser> buildDatabase() {
-        return ImmutableMap.of(
-                ROOT.getId(), ROOT,
-                GUEST.getId(), GUEST,
-                THOR.getId(), THOR,
-                GIGEL.getId(), GIGEL,
-                DOREL.getId(), DOREL
-        );
+    private DatabaseData() {
+        throw new IllegalAccessError("Utility class");
     }
 
-    //TODO - by using this method demonstrate streams
+    static Map<String, IUser> buildDatabase() {
+        Map<String, IUser> result = new HashMap<>();
+        result.put(ROOT.getId(), ROOT);
+        result.put(GUEST.getId(), GUEST);
+        result.put(THOR.getId(), THOR);
+        result.put(GIGEL.getId(), GIGEL);
+        result.put(DOREL.getId(), DOREL);
+
+        return result;
+    }
+
     static List<IUser> getUserList() {
         List<IUser> result = new LinkedList<>();
-
-        //TODO - explain why this works
-        //TODO - demonstrate construction with parameterized constructor
-        //(alt + enter on warning)
         result.addAll(buildDatabase().values());
 
         return result;
